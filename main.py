@@ -164,6 +164,105 @@ while True:
                             print(" ")
                             print("~!~!~!~WRONG CHOICE PLEASE ENTER A VALID VALUE~!~!~!~")
    
+            elif g=="2":
+                while True:
+                        print("""
+                        
+                    ##====================================##  
+                    ||                                    ||
+                    || CHOOSE ONE OF THE GIVEN OPTION :-  ||
+                    ||____________________________________||
+                    ||                                    ||
+                    || 1. Register yourself               ||
+                    || 2.                                 ||
+                    || 3. List of Doctors                 ||
+                    || 4. Search your details             ||
+                    || 5. To modify data                  ||
+                    || 6. Back                            ||
+                    ||                                    ||
+                    ##====================================##
+                    """)
+                        x=int(input("""YOUR OPTION:-"""))
+                        
+                        
+                        if x==1:
+                            print(" ")
+                            print(dat())
+                                
+                        
+                        elif x==2:
+                            print(" ")
+                            print(ret())
+                        
+                            
+                        elif x==3:
+                            print(" ")
+                            print("-----FOLLOWING DOCTORS ARE AVAILABLE-----")
+                            print(" ")
+                            print(df)
+                            
+                        
+                        elif x==4:
+                            print(" ")
+                            print(search())
+                           
+                        
+                            
+                        elif x==5:
+                            print(" ")
+
+                        
+                            while True:
+                                print("""
+                            __________________________      
+                            |                        |
+                            |SELECT WHAT TO CHANGE:- |
+                            |------------------------|
+                            |1.Name                  | 
+                            |2.Age                   |
+                            |3.Gender                |
+                            |4.Phone no.             |
+                            |5.Blood group           |
+                            |6.Back                  | 
+                            |________________________|
+                                """)
+                                            
+                                s=int(input("ENTER YOUR CHOICE:-"))
+
+                                if s==1:
+                                    print(name())
+                                    break
+
+                                elif s==2:
+                                    print(age())
+                                    break
+
+                                elif s==3:
+                                    print(gen())
+                                    break
+
+                                elif s==4:
+                                    print(ph())
+                                    break 
+                                
+                                elif s==5:
+                                    print(bg())
+                                    
+                                elif s==6:
+                                    break
+                                
+                                else:
+                                    print(" ")
+                                    print("""~!~!~!~WRONG CHOICE PLEASE ENTER VALID VALUE~!~!~!~""")
+                                
+                            
+                        elif x==6:
+                            break
+                        
+                        
+                        else:
+                            print(" ")
+                            print("~!~!~!~WRONG CHOICE PLEASE ENTER A VALID VALUE~!~!~!~")
 
             else:
                 break
@@ -179,3 +278,5 @@ while True:
         print("  ")
         break
     
+            
+
