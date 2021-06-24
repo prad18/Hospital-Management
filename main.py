@@ -959,5 +959,17 @@ while True:
                             print("~!~!~!~WRONG CHOICE PLEASE ENTER A VALID VALUE~!~!~!~")
    
 
-    elif e=="2":
-        
+            else:
+                break
+
+
+    else:
+        print("  ")
+        print("  ")
+        print("  ")
+        print("~!~!~Project By S.Pradish Vaidya and Rupaneesh~!~!~")
+        print("  ")
+        print("  ")
+        print("  ")
+        break
+    
