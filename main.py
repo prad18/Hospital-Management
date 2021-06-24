@@ -63,11 +63,6 @@ while True:
                     df=df.rename(index={0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8,8:9,9:10,10:11,11:12,12:13,13:14})
 
 
-                    f={"Services":["X-Ray","MRI","CT Scan","Endoscopy","Dialysis","Ultrasound ","EEG","ENMG","ECG"],
-                    "Room no.":[101,102,103,104,105,301,302,303,304]}
-                    dt=pd.DataFrame(f) 
-                    dt=dt.rename(index={0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8,8:9})
-
 
 
                     while True:
@@ -81,7 +76,7 @@ while True:
                     || 1. Register yourself               ||
                     || 2. Appointment                     ||
                     || 3. List of Doctors                 ||
-                    || 4. Services available              ||
+                    || 4. Search your details             ||
                     || 5. To modify data                  ||
                     || 6. Back                            ||
                     ||                                    ||
@@ -109,11 +104,8 @@ while True:
                         
                         elif x==4:
                             print(" ")
-                            print("-----FOLLOWING SERVICES ARE AVAILABLE------")
-                            print(" ")
-                            print(dt)
-                            print(' ')
-                            print("To avail any of these please contact on our no.:- 9211420420")
+                            print(search())
+                           
                         
                             
                         elif x==5:

@@ -32,23 +32,25 @@ cur.execute("create table if not exists outpatient"
 def dat():
     while True:
         idn=input("ID no.:")
-        if len(idn)==4 :
+        if len(idn)==4 and idn.isnumeric():
             break
         else:
-            print(" ~!~!~!~~4 digits required~~!~!~!~")
+            print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")
     while True:    
         name=input("Patient name:")
-        if type(name)!=str:
-            print("~!~!~!~~Only string~~!~!~!~~!~!~!~")
+        if name.isalpha():
+            break
+            
         else:
-            break    
+            print("~!~!~!~~Only string~~!~!~!~~!~!~!~")
+              
     
     while True:
-        age=int(input("Age:"))
-        if type(age)!=int:
-            print("~!~!~!~~digits required~~!~!~!~")
-        else:
+        age=input("Age:")
+        if age.isnumeric() and len(age)==2:
             break
+        else:
+            print("~!~!~!~~Please enter your appropriate age required~~!~!~!~")
 
     
     while True:
@@ -785,3 +787,33 @@ def bg1():
                 print('''     Date of Admission:-''',row[6])
                 con.commit()
         return("")
+
+
+
+def search():
+        adr=int(input('ENTER YOUR ID NO:'))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        dat=cur.fetchall()
+        a=[]
+        for i in dat:
+            a.append(i)
+            
+        if len(a)!=1:
+            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+            
+        else:
+            print('')
+            print('''
+            ------------------------    
+            |    YOUR  DETAILS     |
+            ------------------------
+            ''')
+            
+            print("")
+            print("""     ID no.:-""",i[0])
+            print('''     Name:-''',i[1])
+            print('''     Age:-''',i[2])
+            print('''     Gender:-''',i[3])
+            print('''     Phone:-''',i[4])
+            print('''     Bloodgroup:-''',i[5])
+        return("") 
