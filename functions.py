@@ -29,6 +29,8 @@ cur.execute("create table if not exists outpatient"
             "phone char(10),"
             "bg char(3),"
             "doa char(10))")    
+
+#--------------------------------------------------------------------------------------------#
 def dat():
     while True:
         idn=input("ID no.:")
@@ -100,6 +102,8 @@ def dat():
         print('''     Bloodgroup:-''',i[5])
     return("")
 
+
+#--------------------------------------------------------------------------------------------#
 #name modify
 def name():
     adr=int(input('ENTER YOUR ID NO:'))
@@ -151,7 +155,7 @@ def name():
 
 
 
-
+#--------------------------------------------------------------------------------------------#
 def age():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -200,6 +204,7 @@ def age():
                 con.commit()
         return("")
     
+#--------------------------------------------------------------------------------------------#
 def gen():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -248,7 +253,7 @@ def gen():
                 con.commit()
         return("")         
 
-
+#--------------------------------------------------------------------------------------------#
 def ph():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -297,7 +302,7 @@ def ph():
                 con.commit()
         return("")
 
-
+#--------------------------------------------------------------------------------------------#
 def bg():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -347,7 +352,7 @@ def bg():
         return("") 
 
 
-
+#--------------------------------------------------------------------------------------------#
 def ret():
         adr=int(input('Enter ID no:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -458,6 +463,7 @@ def ret():
         return(" ")
 
 
+#--------------------------------------------------------------------------------------------#
 def dat1():
     while True:
             idn1=input("ID no.:")
@@ -532,6 +538,8 @@ def dat1():
         print('''     Date of Admission:-''',i[6])
     return("")
 
+
+#--------------------------------------------------------------------------------------------#
 #name modify
 def name1():
     adr=int(input('ENTER YOUR ID NO:'))
@@ -585,7 +593,7 @@ def name1():
 
 
 
-
+#--------------------------------------------------------------------------------------------#
 def age1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -635,7 +643,9 @@ def age1():
                 print('''     Date of Admission:-''',row[6])
                 con.commit()
         return("")
-    
+
+
+#--------------------------------------------------------------------------------------------#   
 def gen1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -686,7 +696,7 @@ def gen1():
                 con.commit()
         return("")         
 
-
+#--------------------------------------------------------------------------------------------#
 def ph1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -818,6 +828,8 @@ def search():
         return("") 
 
 
+
+#--------------------------------------------------------------------------------------------#
 def search1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -845,3 +857,43 @@ def search1():
             print('''     Phone:-''',i[4])
             print('''     Bloodgroup:-''',i[5])
         return("") 
+
+
+
+#--------------------------------------------------------------------------------------------#
+def ret1():
+        adr=int(input('Enter ID no:'))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        dat=cur.fetchall()
+        a=[]
+        for i in dat:
+            a.append(i)
+        if len(a)!=1:
+            print('')
+            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+            
+        else:
+            while True:
+                    s=int(input("Enter the patients systole blood pressure:-"))
+                    d=int(input("Enter the patients diastole blood pressure:-"))
+                    if s<120 and d<80:
+                        print("Normal")
+                        break
+                    elif s>120 or s<=129 and d<=80:
+                        print("Elevated")
+                        break
+                
+                    elif s>130 or s<=139 and d>80 or d<=89 :
+                        print("Hypertension Stage 1")
+                        break
+                    elif s>=140 or s<180 and d>=90 or d<119:
+                        print("Hypertension stage 2")
+                        break
+                    elif s>180 and d >120:
+                        print("HYPERTENSIVE CRISIS\n(consult your doctor immediately)")
+                        break
+                    
+                    else:
+                        print("~!~!~!~WRONG OPTION PLEASE ENTER VALID VALUE~!~!~!~")
+                
+        return(" ")

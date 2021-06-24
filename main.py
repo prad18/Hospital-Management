@@ -73,7 +73,7 @@ while True:
                     || CHOOSE ONE OF THE GIVEN OPTION :-  ||
                     ||____________________________________||
                     ||                                    ||
-                    || 1. Register yourself               ||
+                    || 1. Register patient                ||
                     || 2. Appointment                     ||
                     || 3. List of Doctors                 ||
                     || 4. Search your details             ||
@@ -173,10 +173,10 @@ while True:
                     || CHOOSE ONE OF THE GIVEN OPTION :-  ||
                     ||____________________________________||
                     ||                                    ||
-                    || 1. Register yourself               ||
-                    || 2.                                 ||
-                    || 3. Search your details             ||
-                    || 5. To modify data                  ||
+                    || 1. Register patient                ||
+                    || 2. Patient Status                  ||
+                    || 3. Search patient details          ||
+                    || 5. Modify patient data             ||
                     || 6. Back                            ||
                     ||                                    ||
                     ##====================================##
