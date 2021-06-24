@@ -175,8 +175,7 @@ while True:
                     ||                                    ||
                     || 1. Register yourself               ||
                     || 2.                                 ||
-                    || 3. List of Doctors                 ||
-                    || 4. Search your details             ||
+                    || 3. Search your details             ||
                     || 5. To modify data                  ||
                     || 6. Back                            ||
                     ||                                    ||
@@ -187,7 +186,7 @@ while True:
                         
                         if x==1:
                             print(" ")
-                            print(dat())
+                            print(dat1())
                                 
                         
                         elif x==2:
@@ -204,7 +203,7 @@ while True:
                         
                         elif x==4:
                             print(" ")
-                            print(search())
+                            print(search1())
                            
                         
                             
@@ -230,23 +229,23 @@ while True:
                                 s=int(input("ENTER YOUR CHOICE:-"))
 
                                 if s==1:
-                                    print(name())
+                                    print(name1())
                                     break
 
                                 elif s==2:
-                                    print(age())
+                                    print(age1())
                                     break
 
                                 elif s==3:
-                                    print(gen())
+                                    print(gen1())
                                     break
 
                                 elif s==4:
-                                    print(ph())
+                                    print(ph1())
                                     break 
                                 
                                 elif s==5:
-                                    print(bg())
+                                    print(bg1())
                                     
                                 elif s==6:
                                     break

@@ -789,10 +789,38 @@ def bg1():
         return("")
 
 
-
 def search():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        dat=cur.fetchall()
+        a=[]
+        for i in dat:
+            a.append(i)
+            
+        if len(a)!=1:
+            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+            
+        else:
+            print('')
+            print('''
+            ------------------------    
+            |    YOUR  DETAILS     |
+            ------------------------
+            ''')
+            
+            print("")
+            print("""     ID no.:-""",i[0])
+            print('''     Name:-''',i[1])
+            print('''     Age:-''',i[2])
+            print('''     Gender:-''',i[3])
+            print('''     Phone:-''',i[4])
+            print('''     Bloodgroup:-''',i[5])
+        return("") 
+
+
+def search1():
+        adr=int(input('ENTER YOUR ID NO:'))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
