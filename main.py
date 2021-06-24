@@ -260,16 +260,368 @@ while True:
             else:
                 break
 
+    
+    elif e=="2":
+        d={"NAME OF PATIENT":["Amit","Sanjay","Vipul","Sayeed"],"AGE":[23,34,27,26],
+           "APPOINTMENT NO.":[64,52,12,56]}
+        d1=pd.DataFrame(d)
+        d1=d1.rename(index={0:1,1:2,2:3,3:4})
 
+        g={"NAME OF PATIENT":["Ankit","Sanjeev","Vikas","Shoib",'Rehan','Suarav','Ganpat'],"AGE":[12,45,21,23,34,27,26],
+        "APPOINTMENT NO.":[3,82,12,31,54,39,46]}
+        d2=pd.DataFrame(g)
+        d2=d2.rename(index={0:1,1:2,2:3,3:4,4:5,5:6,6:7})
+
+        f={"NAME OF PATIENT":["Tanay","Ajay","Akaash","Shakib","Rohan",'Raju','Farhan','Bhuvan'],"AGE":[42,58,32,67,23,34,27,26],
+        "APPOINTMENT NO.":[43,23,61,32,21,43,56,31]}
+        d3=pd.DataFrame(f)
+        d3=d3.rename(index={0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8})
+
+        h={"NAME OF PATIENT":["Ashish","Joy","Jayesh","Somesh","Rahul",'Arham','Bhanu','Danish'],"AGE":[42,58,32,67,23,34,27,26],
+        "APPOINTMENT NO.":[43,23,61,32,21,43,56,31]}
+        d4=pd.DataFrame(h)
+        d4=d4.rename(index={0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8})
+
+        s={"NAME OF PATIENT":["Manav","Dheeraj","Kamal","Sohrab","Yash"],"AGE":[12,23,34,27,26],
+        "APPOINTMENT NO.":[64,57,22,12,56]}
+        d5=pd.DataFrame(s)
+        d5=d5.rename(index={0:1,1:2,2:3,3:4,4:5})
+
+        i={"NAME OF PATIENT":["Umesh",'Kamal','Pankaj','Dhyanesh','Arnav'],"AGE":[12,23,34,27,26],
+        "APPOINTMENT NO.":[64,57,22,12,56]}
+        d6=pd.DataFrame(i)
+        d6=d6.rename(index={0:1,1:2,2:3,3:4,4:5})
+
+        while True:
+            print('')
+            e=input("ENTER YOUR ID NO. (press enter to exit):-")
+            print(" ")
+            if e=="1":
+                w=7001
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==w:
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                    
+                        print("|||   GOOD EVENING MR. VARUN   |||")
+                    
+                    else:
+                        print("|||   GOOD MORNING MR. VARUN   |||")
+                    print(" ")
+                    print(""" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-""")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+
+            elif e=='2':
+                w=7002
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==w: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. HRITHIK   |||")
+                    
+                    else:
+                        print("|||   GOOD MORNING MR. HRITHIK   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)    
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+
+                
+            elif e=='3':
+                z=7003
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. SALMAN   |||")
+                    
+                    else:
+                        print("|||   GOOD MORNING MR. SALMAN    |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)  
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
+
+            elif e=='4':
+                z=7004
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. SHAHRUKH   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. SHAHRUKH   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)    
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
+        
+                
+            elif e=='5':
+                z=7005
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. AKSHAY   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. AKSHAY   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
+        
+                
+            elif e=='6':
+                z=7006
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. AMIR   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. AMIR    |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)  
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
+                
+            elif e=='7':
+                z=7007
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. SIDHARTH   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. SIDHARTH   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~') 
+                
+            elif e=='8':
+                z=7008
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. ABHISHEK   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. ABHISHEK   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~') 
+                
+            elif e=='9':
+                z=7009
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. AJAY   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. AJAY   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+                
+            elif e=='10':
+                z=7010
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. RANVEER   |||")
+
+                    else:
+                        print("|||   GOOD MORNING MR. RANVEER   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+                
+            elif e=='11':
+                z=7011
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. IRFAN   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. IRFAN   |||")
+                    print(" ")            
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o) 
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+                
+            elif e=='12':
+                z=7012
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. JOHN   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. JOHN   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+                
+            elif e=='13':
+                z=7013
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. SANJAY   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. SANJAY   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o) 
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+                
+            elif e=='14':
+                z=7014
+                pswd=int(input('ENTER PASSWORD:'))
+                if pswd==z: 
+                    t=datetime.datetime.now()
+                    l=t.strftime("%p")
+                    if l=="PM":
+                        print("|||   GOOD EVENING MR. SHAHID   |||")
+                        
+                    else:
+                        print("|||   GOOD MORNING MR. SHAHID   |||")
+                    print(" ")    
+                    print(" YOU HAVE APPOINTMENT WITH FOLLOWING PATIENTS:-")
+                    print("")
+                    q=(d1,d2,d3,d4,d5,d6)
+                    o=rd.choice(q)
+                    print(o)
+                else:
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
+            
+            else:
+                break    
+         
+                        
+    elif e=="3":
+            print(" ")
+            print("\n"
+                "      \n"
+                "   ##======================================================##\n"
+                "   || _____        ___                          ___        ||\n"
+                "   ||   |   |   | |   | |\   | |  /      |   | |   | |   | ||\n"
+                "   ||   |   |___| |___| | \  | |_/       |___| |   | |   | ||\n"
+                "   ||   |   |   | |   | |  \ | | \           | |   | |   | ||\n"
+                "   ||   |   |   | |   | |   \| |  \       ___| |___| |___| ||\n"
+                "   ##======================================================##\n"
+                "\n")
+            
+            print("  ")
+            print("  ")
+            print("  ")
+            print("~!~!~Project By S.Pradish Vaidya and Rupaneesh~!~!~")
+            print("  ")
+            print("  ")
+            print("  ")
+            break 
+        
+    
     else:
-        print("  ")
-        print("  ")
-        print("  ")
-        print("~!~!~Project By S.Pradish Vaidya and Rupaneesh~!~!~")
-        print("  ")
-        print("  ")
-        print("  ")
-        break
+        print(" ")
+        print("~~~~PLEASE ENTER 1,2 OR 3~~~~")
+
+
+
+
+
+
+
+
+
+
+
+    
     
             
 
