@@ -176,8 +176,8 @@ while True:
                     || 1. Register patient                ||
                     || 2. Patient Status                  ||
                     || 3. Search patient details          ||
-                    || 5. Modify patient data             ||
-                    || 6. Back                            ||
+                    || 4. Modify patient data             ||
+                    || 5. Back                            ||
                     ||                                    ||
                     ##====================================##
                     """)
@@ -191,23 +191,17 @@ while True:
                         
                         elif x==2:
                             print(" ")
-                            print(ret())
+                            print(ret1())
                         
                             
                         elif x==3:
                             print(" ")
-                            print("-----FOLLOWING DOCTORS ARE AVAILABLE-----")
-                            print(" ")
-                            print(df)
-                            
-                        
-                        elif x==4:
-                            print(" ")
                             print(search1())
+                        
                            
                         
                             
-                        elif x==5:
+                        elif x==4:
                             print(" ")
 
                         
@@ -255,7 +249,7 @@ while True:
                                     print("""~!~!~!~WRONG CHOICE PLEASE ENTER VALID VALUE~!~!~!~""")
                                 
                             
-                        elif x==6:
+                        elif x==5:
                             break
                         
                         
