@@ -753,7 +753,7 @@ def gen1():
 
 
 #--------------------------------------------------------------------------------------------#
-#phone no change
+#phone number change
 def ph1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
