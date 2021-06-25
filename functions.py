@@ -1,3 +1,4 @@
+from codecs import register
 import datetime
 import random as rd
 import pandas as pd
@@ -30,7 +31,12 @@ cur.execute("create table if not exists outpatient"
             "bg char(3),"
             "doa char(10))")    
 
-#--------------------------------------------------------------------------------------------#
+
+
+
+#-------------------------------------------------------------------FUNCTIONS-----------------------------------------------------------------------#
+
+#register
 def dat():
     while True:
         idn=input("ID no.:")
@@ -156,6 +162,7 @@ def name():
 
 
 #--------------------------------------------------------------------------------------------#
+#age modification
 def age():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -205,6 +212,7 @@ def age():
         return("")
     
 #--------------------------------------------------------------------------------------------#
+#gender modification
 def gen():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -254,6 +262,7 @@ def gen():
         return("")         
 
 #--------------------------------------------------------------------------------------------#
+#phone modify
 def ph():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -302,7 +311,9 @@ def ph():
                 con.commit()
         return("")
 
+
 #--------------------------------------------------------------------------------------------#
+#blood grp 
 def bg():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -353,6 +364,7 @@ def bg():
 
 
 #--------------------------------------------------------------------------------------------#
+#appointment 
 def ret():
         adr=int(input('Enter ID no:'))
         cur.execute('select * from inpatient where idno=(%s)',(adr,))
@@ -463,7 +475,47 @@ def ret():
         return(" ")
 
 
+
 #--------------------------------------------------------------------------------------------#
+#search
+def search():
+        adr=int(input('ENTER YOUR ID NO:'))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        dat=cur.fetchall()
+        a=[]
+        for i in dat:
+            a.append(i)
+            
+        if len(a)!=1:
+            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+            
+        else:
+            print('')
+            print('''
+            ------------------------    
+            |    YOUR  DETAILS     |
+            ------------------------
+            ''')
+            
+            print("")
+            print("""     ID no.:-""",i[0])
+            print('''     Name:-''',i[1])
+            print('''     Age:-''',i[2])
+            print('''     Gender:-''',i[3])
+            print('''     Phone:-''',i[4])
+            print('''     Bloodgroup:-''',i[5])
+        return("") 
+
+
+
+
+
+#---------------------------------------------------------------INPATIENT----------------------------------------------------------------------#
+
+
+
+
+#register inpatient
 def dat1():
     while True:
             idn1=input("ID no.:")
@@ -594,6 +646,7 @@ def name1():
 
 
 #--------------------------------------------------------------------------------------------#
+#age modify
 def age1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -645,7 +698,8 @@ def age1():
         return("")
 
 
-#--------------------------------------------------------------------------------------------#   
+#--------------------------------------------------------------------------------------------#
+#gender modify
 def gen1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -696,7 +750,10 @@ def gen1():
                 con.commit()
         return("")         
 
+
+
 #--------------------------------------------------------------------------------------------#
+#phone no change
 def ph1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -748,6 +805,10 @@ def ph1():
         return("")
 
 
+
+
+#--------------------------------------------------------------------------------------------#
+#blood group
 def bg1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -799,37 +860,8 @@ def bg1():
         return("")
 
 
-def search():
-        adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
-        dat=cur.fetchall()
-        a=[]
-        for i in dat:
-            a.append(i)
-            
-        if len(a)!=1:
-            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
-            
-        else:
-            print('')
-            print('''
-            ------------------------    
-            |    YOUR  DETAILS     |
-            ------------------------
-            ''')
-            
-            print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
-        return("") 
-
-
-
 #--------------------------------------------------------------------------------------------#
+#search
 def search1():
         adr=int(input('ENTER YOUR ID NO:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
@@ -861,6 +893,7 @@ def search1():
 
 
 #--------------------------------------------------------------------------------------------#
+#patient status
 def ret1():
         adr=int(input('Enter ID no:'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
