@@ -519,24 +519,25 @@ def search():
 def dat1():
     while True:
             idn1=input("ID no.:")
-            if len(idn1)==4 :
-                break
+            if len(idn1)==4 and idn1.isnumeric():
+                            break
             else:
-                print(" ~!~!~!~~4 digits required~~!~!~!~")
-
+                print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")
     while True:    
         name1=input("Patient name:")
-        if type(name1)!=str:
-            print("~!~!~!~~Only String~~!~!~!~")
-        else:
+        if name1.isalpha():
             break
-
+            
+        else:
+            print("~!~!~!~~Only string~~!~!~!~~!~!~!~")
+              
+    
     while True:
-        age1=int(input("Age:"))
-        if type(age1)!=int:
-            print("~!~!~!~~digits required~~!~!~!~")
-        else:
+        age1=input("Age:")
+        if age1.isnumeric() and len(age1)==2:
             break
+        else:
+            print("~!~!~!~~Please enter your appropriate age required~~!~!~!~")
 
     
     while True:
@@ -556,6 +557,7 @@ def dat1():
         bg1=input("""Blood group(A+,B+,O+,AB+,A-,B-,O-,AB-):-""")
         if bg1==("A+") or bg1==("B+") or bg1==("O+") or bg1==("AB+") or bg1==("A-") or bg1==("B-") or bg1==("O-") or bg1==("AB-"):
             break
+
         else:
             print("~!~!~!~~ Enter valid value ~~!~!~!~")
     while True:
@@ -912,14 +914,14 @@ def ret1():
                     if s<120 and d<80:
                         print("Normal")
                         break
-                    elif s>120 or s<=129 and d<=80:
+                    elif s>120 and s<=129 and d<=80:
                         print("Elevated")
                         break
                 
-                    elif s>130 or s<=139 and d>80 or d<=89 :
+                    elif s>130 and s<=139 and d>80 and d<=89 :
                         print("Hypertension Stage 1")
                         break
-                    elif s>=140 or s<180 and d>=90 or d<119:
+                    elif s>=140 and s<180 and d>=90 and d<119:
                         print("Hypertension stage 2")
                         break
                     elif s>180 and d >120:
