@@ -1,4 +1,4 @@
 # Hospital-Management
 Very basic hospital management system with mysql connectivity.
-Made by Pradish.
+Made by Pradish and Rupaneesh.
 Email:- pradishvaidyas@gmail.com
