@@ -12,26 +12,6 @@ cur.execute("create database if not exists Hospital2")
 
 cur.execute("use Hospital2")
 
-cur.execute("create table if not exists inpatient"
-            "("
-            "idno char(12) primary key,"
-            "name char(20),"
-            "age int(10),"
-            "gender char(1),"
-            "phone char(10),"
-            "bg char(3))")
-
-cur.execute("create table if not exists outpatient"
-            "("
-            "idno char(12) ,"
-            "name char(20),"
-            "age int(10),"
-            "gender char(1),"
-            "phone char(10),"
-            "bg char(3),"
-            "doa char(10))")    
-
-
 
 
 #-------------------------------------------------------------------FUNCTIONS-----------------------------------------------------------------------#
@@ -76,6 +56,7 @@ def dat():
             break
         else:
             print("~!~!~!~~10 digits required~~!~!~!~")
+    
     while True:
         bg=input("""Blood group(A+,B+,O+,AB+,A-,B-,O-,AB-):-""")
         if bg==("A+") or bg==("B+") or bg==("O+") or bg==("AB+") or bg==("A-") or bg==("B-") or bg==("O-") or bg==("AB-"):
@@ -83,8 +64,23 @@ def dat():
         else:
             print("~!~!~!~~ Enter valid value ~~!~!~!~")
 
+    while True:
+        doc=input("""Doctor Consulted:""")
+        if doc.isalpha:
+            break
+        else:
+            print("~!~!~!~~ Doctor's Name Only ~~!~!~!~")        
+
+    while True:
+        dis=input("""Illness Assessed:""")
+        if dis.isalpha:
+            break
+        else:
+            print("~!~!~!~~ Enter Valid Value ~~!~!~!~")
+
+
     try:
-        cur.execute("insert into inpatient(idno,name,age,gender,phone,bg) values(%s,%s,%s,%s,%s,%s)",(idn,name,age,gen,ph,bg,))
+        cur.execute("insert into outpatient(idno,name,age,gender,phone,bg,Doctor_consulted,Illness) values(%s,%s,%s,%s,%s,%s,%s,%s)",(idn,name,age,gen,ph,bg,doc,dis))
         con.commit()
         print(" ")
         print("""   
@@ -101,15 +97,18 @@ def dat():
         |_____________________________| 
         
         """)
-        cur.execute("select * from inpatient where idno=(%s);",(idn,))
+        cur.execute("select * from outpatient where idno=(%s);",(idn,))
         d=cur.fetchall()
         for i in d:
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Doctor Consulted-''',i[7])
+            print('''     Illness:-''',i[8])
         return("")  
     
     except mysql.connector.Error:
@@ -117,15 +116,11 @@ def dat():
         
     
     
-    
-    
-
-
-#--------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------OUTPATIENT------------------------------------------------------------------------------------#
 #name modify
 def name():
     adr=int(input('ENTER YOUR ID NO:'))
-    cur.execute('select * from inpatient where idno=(%s)',(adr,))
+    cur.execute('select * from outpatient where idno=(%s)',(adr,))
     dat=cur.fetchall()
     a=[]
     for i in dat:
@@ -143,16 +138,18 @@ def name():
             ''')
         
         print("")
-        print("""     ID no.:-""",i[0])
-        print('''     Name:-''',i[1])
-        print('''     Age:-''',i[2])
-        print('''     Gender:-''',i[3])
-        print('''     Phone:-''',i[4])
-        print('''     Bloodgroup:-''',i[5])
+        print("""     ID no.:-""",i[0],'-',i[1])
+        print('''     Name:-''',i[2])
+        print('''     Age:-''',i[3])
+        print('''     Gender:-''',i[4])
+        print('''     Phone:-''',i[5])
+        print('''     Bloodgroup:-''',i[6])
+        print('''     Doctor Consulted-''',i[7])
+        print('''     Illness:-''',i[8])
         n=input('ENTER NEW NAME:-')
-        cur.execute('update inpatient set name=(%s) where idno=(%s);',(n,adr,))
+        cur.execute('update outpatient set name=(%s) where idno=(%s);',(n,adr,))
         con.commit()
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         for row in dat:
                 print('')
@@ -162,12 +159,14 @@ def name():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
+                print("""     ID no.:-""",row[0],"-",row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Doctor Consulted-''',row[7])
+                print('''     Illness:-''',row[8])
                 con.commit()
         return("")
 
@@ -177,7 +176,7 @@ def name():
 #age modification
 def age():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -195,16 +194,18 @@ def age():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+            print("""     ID no.:-""",i[0],"-",i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Doctor Consulted-''',i[7])
+            print('''     Illness:-''',i[8])
             n=input('ENTER NEW AGE:-')
-            cur.execute('update inpatient set age=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update outpatient set age=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from inpatient where idno=(%s)',(adr,))
+            cur.execute('select * from outpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -214,12 +215,14 @@ def age():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Doctor Consulted-''',row[7])
+                print('''     Illness:-''',row[8])
                 con.commit()
         return("")
     
@@ -227,7 +230,7 @@ def age():
 #gender modification
 def gen():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -245,16 +248,18 @@ def gen():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Doctor Consulted-''',i[7])
+            print('''     Illness:-''',i[8])
             n=input('ENTER NEW GENDER:-')
-            cur.execute('update inpatient set gender=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update outpatient set gender=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from inpatient where idno=(%s)',(adr,))
+            cur.execute('select * from outpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -264,12 +269,14 @@ def gen():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Doctor Consulted-''',row[7])
+                print('''     Illness:-''',row[8])
                 con.commit()
         return("")         
 
@@ -277,7 +284,7 @@ def gen():
 #phone modify
 def ph():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -295,16 +302,18 @@ def ph():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Doctor Consulted-''',i[7])
+            print('''     Illness:-''',i[8])
             n=input('ENTER NEW PHONE NO:-')
-            cur.execute('update inpatient set phone=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update outpatient set phone=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from inpatient where idno=(%s)',(adr,))
+            cur.execute('select * from outpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -314,12 +323,14 @@ def ph():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Doctor Consulted-''',row[7])
+                print('''     Illness:-''',row[8])
                 con.commit()
         return("")
 
@@ -328,7 +339,7 @@ def ph():
 #blood grp 
 def bg():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -346,16 +357,18 @@ def bg():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Doctor Consulted-''',i[7])
+            print('''     Illness:-''',i[8])
             n=input('ENTER NEW BLOOD GROUP:-')
-            cur.execute('update inpatient set bg=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update outpatient set bg=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from inpatient where idno=(%s)',(adr,))
+            cur.execute('select * from outpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -365,12 +378,14 @@ def bg():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Doctor Consulted-''',row[7])
+                print('''     Illness:-''',row[8])
                 con.commit()
         return("") 
 
@@ -379,7 +394,7 @@ def bg():
 #appointment 
 def ret():
         adr=int(input('Enter ID no:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -491,8 +506,8 @@ def ret():
 #--------------------------------------------------------------------------------------------#
 #search
 def search():
-        adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
+        adr=int(input('ENTER YOUR ID NO(without code):'))
+        cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -510,19 +525,21 @@ def search():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Doctor Consulted-''',i[7])
+            print('''     Illness:-''',i[8])
         return("") 
 
 
 
 
 
-#---------------------------------------------------------------INPATIENT----------------------------------------------------------------------#
+#-------------------------------------------------------------------------------------INPATIENT-------------------------------------------------------------------------#
 
 
 
@@ -551,7 +568,6 @@ def dat1():
         else:
             print("~!~!~!~~Please enter your appropriate age required~~!~!~!~")
 
-    
     while True:
         gen1=input("Gender M/F:")
         if gen1==("M") or gen1==("F"):
@@ -565,6 +581,7 @@ def dat1():
             break
         else:
             print("~!~!~!~~10 digits required~~!~!~!~")
+    
     while True:
         bg1=input("""Blood group(A+,B+,O+,AB+,A-,B-,O-,AB-):-""")
         if bg1==("A+") or bg1==("B+") or bg1==("O+") or bg1==("AB+") or bg1==("A-") or bg1==("B-") or bg1==("O-") or bg1==("AB-"):
@@ -572,12 +589,27 @@ def dat1():
 
         else:
             print("~!~!~!~~ Enter valid value ~~!~!~!~")
+    
     while True:
         doa=input("""Date Of Admission(YY-MM-DD):-""")
         break
     
+    while True:
+        doc=input("""Doctor Consulted:""")
+        if doc.isalpha:
+            break
+        else:
+            print("~!~!~!~~ Doctor's Name Only ~~!~!~!~")        
+
+    while True:
+        dis=input("""Illness Assessed:""")
+        if dis.isalpha:
+            break
+        else:
+            print("~!~!~!~~ Enter Valid Value ~~!~!~!~")
+
     try:
-        cur.execute("insert into outpatient(idno,name,age,gender,phone,bg,doa) values(%s,%s,%s,%s,%s,%s,%s)",(idn1,name1,age1,gen1,ph1,bg1,doa))
+        cur.execute("insert into inpatient(idno,name,age,gender,phone,bg,doa,Doctor_consulted,Illness) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",(idn1,name1,age1,gen1,ph1,bg1,doa,doc,dis))
         con.commit()
         print(" ")
         print("""   
@@ -594,16 +626,19 @@ def dat1():
         |_____________________________| 
         
         """)
-        cur.execute("select * from outpatient where idno=(%s);",(idn1,))
+        cur.execute("select * from inpatient where idno=(%s);",(idn1,))
         d=cur.fetchall()
         for i in d:
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
-            print('''     Date of Admission:-''',i[6])
+            print("""     ID no.:-""",i[0],"-",i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Date of Admission:-''',i[7])
+            print('''     Doctor Consulted:-''',i[8])
+            print('''     Illness:-''',i[9])
+
         return("")
 
     except mysql.connector.Error:
@@ -613,7 +648,7 @@ def dat1():
 #name modify
 def name1():
     adr=int(input('ENTER YOUR ID NO:'))
-    cur.execute('select * from outpatient where idno=(%s)',(adr,))
+    cur.execute('select * from inpatient where idno=(%s)',(adr,))
     dat=cur.fetchall()
     a=[]
     for i in dat:
@@ -631,17 +666,19 @@ def name1():
             ''')
         
         print("")
-        print("""     ID no.:-""",i[0])
-        print('''     Name:-''',i[1])
-        print('''     Age:-''',i[2])
-        print('''     Gender:-''',i[3])
-        print('''     Phone:-''',i[4])
-        print('''     Bloodgroup:-''',i[5])
-        print('''     Date of Admission:-''',i[6])
+        print("""     ID no.:-""",i[0],'-',i[1])
+        print('''     Name:-''',i[2])
+        print('''     Age:-''',i[3])
+        print('''     Gender:-''',i[4])
+        print('''     Phone:-''',i[5])
+        print('''     Bloodgroup:-''',i[6])
+        print('''     Date of Admission:-''',i[7])
+        print('''     Doctor Consulted:-''',i[8])
+        print('''     Illness:-''',i[9])
         n=input('ENTER NEW NAME:-')
-        cur.execute('update outpatient set name=(%s) where idno=(%s);',(n,adr,))
+        cur.execute('update inpatient set name=(%s) where idno=(%s);',(n,adr,))
         con.commit()
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         for row in dat:
                 print('')
@@ -651,13 +688,15 @@ def name1():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
-                print('''     Date of Admission:-''',row[6])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Date of Admission:-''',row[7])
+                print('''     Doctor Consulted:-''',row[8])
+                print('''     Illness:-''',row[9])
                 con.commit()
         return("")
 
@@ -667,7 +706,7 @@ def name1():
 #age modify
 def age1():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -685,17 +724,19 @@ def age1():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
-            print('''     Date of Admission:-''',i[6])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Date of Admission:-''',i[7])
+            print('''     Doctor Consulted:-''',i[8])
+            print('''     Illness:-''',i[9])
             n=input('ENTER NEW AGE:-')
-            cur.execute('update outpatient set age=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update inpatient set age=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from outpatient where idno=(%s)',(adr,))
+            cur.execute('select * from inpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -705,13 +746,15 @@ def age1():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
-                print('''     Date of Admission:-''',row[6])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Date of Admission:-''',row[7])
+                print('''     Doctor Consulted:-''',i[8])
+                print('''     Illness:-''',i[9])
                 con.commit()
         return("")
 
@@ -720,7 +763,7 @@ def age1():
 #gender modify
 def gen1():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -738,17 +781,19 @@ def gen1():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
-            print('''     Date of Admission:-''',i[6])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Date of Admission:-''',i[7])
+            print('''     Doctor Consulted:-''',i[8])
+            print('''     Illness:-''',i[9])
             n=input('MODIFY GENDER DETAILS(M/Y):-')
-            cur.execute('update outpatient set gender=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update inpatient set gender=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from outpatient where idno=(%s)',(adr,))
+            cur.execute('select * from inpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -758,13 +803,15 @@ def gen1():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
-                print('''     Date of Admission:-''',row[6])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Date of Admission:-''',row[7])
+                print('''     Doctor Consulted:-''',row[8])
+                print('''     Illness:-''',row[9])
                 con.commit()
         return("")         
 
@@ -774,7 +821,7 @@ def gen1():
 #phone number change
 def ph1():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -792,17 +839,19 @@ def ph1():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
-            print('''     Date of Admission:-''',i[6])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Date of Admission:-''',i[7])
+            print('''     Doctor Consulted:-''',i[8])
+            print('''     Illness:-''',i[9])
             n=input('ENTER NEW PHONE NO:-')
-            cur.execute('update outpatient set phone=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update inpatient set phone=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from outpatient where idno=(%s)',(adr,))
+            cur.execute('select * from inpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -812,13 +861,15 @@ def ph1():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
-                print('''     Date of Admission:-''',row[6])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Date of Admission:-''',row[7])
+                print('''     Doctor Consulted:-''',row[8])
+                print('''     Illness:-''',row[9])
                 con.commit()
         return("")
 
@@ -829,7 +880,7 @@ def ph1():
 #blood group
 def bg1():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -847,17 +898,19 @@ def bg1():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
-            print('''     Date of Admission:-''',i[6])
+            print("""     ID no.:-""",i[0],'-',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Date of Admission:-''',i[7])
+            print('''     Doctor Consulted:-''',i[8])
+            print('''     Illness:-''',i[9])
             n=input('ENTER NEW BLOOD GROUP:-')
-            cur.execute('update outpatient set bg=(%s) where idno=(%s);',(n,adr,))
+            cur.execute('update inpatient set bg=(%s) where idno=(%s);',(n,adr,))
             con.commit()
-            cur.execute('select * from outpatient where idno=(%s)',(adr,))
+            cur.execute('select * from inpatient where idno=(%s)',(adr,))
             dat=cur.fetchall()
             for row in dat:
                 print('')
@@ -867,13 +920,15 @@ def bg1():
         ------------------------      
                 ''')
                 print('')                
-                print("""     ID no.:-""",row[0])
-                print('''     Name:-''',row[1])
-                print('''     Age:-''',row[2])
-                print('''     Gender:-''',row[3])
-                print('''     Phone:-''',row[4])
-                print('''     Bloodgroup:-''',row[5])
-                print('''     Date of Admission:-''',row[6])
+                print("""     ID no.:-""",row[0],'-',row[1])
+                print('''     Name:-''',row[2])
+                print('''     Age:-''',row[3])
+                print('''     Gender:-''',row[4])
+                print('''     Phone:-''',row[5])
+                print('''     Bloodgroup:-''',row[6])
+                print('''     Date of Admission:-''',row[7])
+                print('''     Doctor Consulted:-''',row[8])
+                print('''     Illness:-''',row[9])
                 con.commit()
         return("")
 
@@ -882,7 +937,7 @@ def bg1():
 #search
 def search1():
         adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
@@ -900,12 +955,15 @@ def search1():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0])
-            print('''     Name:-''',i[1])
-            print('''     Age:-''',i[2])
-            print('''     Gender:-''',i[3])
-            print('''     Phone:-''',i[4])
-            print('''     Bloodgroup:-''',i[5])
+            print("""     ID no.:-""",i[0],'',i[1])
+            print('''     Name:-''',i[2])
+            print('''     Age:-''',i[3])
+            print('''     Gender:-''',i[4])
+            print('''     Phone:-''',i[5])
+            print('''     Bloodgroup:-''',i[6])
+            print('''     Date of Admission:-''',i[7])
+            print('''     Doctor Consulted:-''',i[8])
+            print('''     Illness:-''',i[9])
         return("") 
 
 
@@ -914,7 +972,7 @@ def search1():
 #patient status
 def ret1():
         adr=int(input('Enter ID no:'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
+        cur.execute('select * from inpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
         for i in dat:
