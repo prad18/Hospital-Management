@@ -42,8 +42,10 @@ def dat():
         idn=input("ID no.:")
         if len(idn)==4 and idn.isnumeric():
             break
+
         else:
             print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")
+    
     while True:    
         name=input("Patient name:")
         if name.isalpha():
@@ -80,33 +82,43 @@ def dat():
             break
         else:
             print("~!~!~!~~ Enter valid value ~~!~!~!~")
-    cur.execute("insert into inpatient(idno,name,age,gender,phone,bg) values(%s,%s,%s,%s,%s,%s)",(idn,name,age,gen,ph,bg,))
-    con.commit()
-    print(" ")
-    print("""   
-    __________________________        
-    |                        |
-    |YOU HAVE BEEN REGISTERED| 
-    |________________________|     
+
+    try:
+        cur.execute("insert into inpatient(idno,name,age,gender,phone,bg) values(%s,%s,%s,%s,%s,%s)",(idn,name,age,gen,ph,bg,))
+        con.commit()
+        print(" ")
+        print("""   
+        __________________________        
+        |                        |
+        |YOU HAVE BEEN REGISTERED| 
+        |________________________|     
+            """)
+        
+        print("""
+        _______________________________ 
+        |                             |
+        |Your details are as follows:-|
+        |_____________________________| 
+        
         """)
+        cur.execute("select * from inpatient where idno=(%s);",(idn,))
+        d=cur.fetchall()
+        for i in d:
+            print("""     ID no.:-""",i[0])
+            print('''     Name:-''',i[1])
+            print('''     Age:-''',i[2])
+            print('''     Gender:-''',i[3])
+            print('''     Phone:-''',i[4])
+            print('''     Bloodgroup:-''',i[5])
+        return("")  
     
-    print("""
-    _______________________________ 
-    |                             |
-    |Your details are as follows:-|
-    |_____________________________| 
+    except mysql.connector.Error:
+        print("Id No Already exists................")
+        
     
-    """)
-    cur.execute("select * from inpatient where idno=(%s);",(idn,))
-    d=cur.fetchall()
-    for i in d:
-        print("""     ID no.:-""",i[0])
-        print('''     Name:-''',i[1])
-        print('''     Age:-''',i[2])
-        print('''     Gender:-''',i[3])
-        print('''     Phone:-''',i[4])
-        print('''     Bloodgroup:-''',i[5])
-    return("")
+    
+    
+    
 
 
 #--------------------------------------------------------------------------------------------#
@@ -932,3 +944,4 @@ def ret1():
                         print("~!~!~!~WRONG OPTION PLEASE ENTER VALID VALUE~!~!~!~")
                 
         return(" ")
+
