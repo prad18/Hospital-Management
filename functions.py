@@ -575,35 +575,39 @@ def dat1():
     while True:
         doa=input("""Date Of Admission(YY-MM-DD):-""")
         break
-    cur.execute("insert into outpatient(idno,name,age,gender,phone,bg,doa) values(%s,%s,%s,%s,%s,%s,%s)",(idn1,name1,age1,gen1,ph1,bg1,doa))
-    con.commit()
-    print(" ")
-    print("""   
-    __________________________        
-    |                        |
-    |YOU HAVE BEEN REGISTERED| 
-    |________________________|     
+    
+    try:
+        cur.execute("insert into outpatient(idno,name,age,gender,phone,bg,doa) values(%s,%s,%s,%s,%s,%s,%s)",(idn1,name1,age1,gen1,ph1,bg1,doa))
+        con.commit()
+        print(" ")
+        print("""   
+        __________________________        
+        |                        |
+        |YOU HAVE BEEN REGISTERED| 
+        |________________________|     
+            """)
+        
+        print("""
+        _______________________________ 
+        |                             |
+        |Your details are as follows:-|
+        |_____________________________| 
+        
         """)
-    
-    print("""
-    _______________________________ 
-    |                             |
-    |Your details are as follows:-|
-    |_____________________________| 
-    
-    """)
-    cur.execute("select * from outpatient where idno=(%s);",(idn1,))
-    d=cur.fetchall()
-    for i in d:
-        print("""     ID no.:-""",i[0])
-        print('''     Name:-''',i[1])
-        print('''     Age:-''',i[2])
-        print('''     Gender:-''',i[3])
-        print('''     Phone:-''',i[4])
-        print('''     Bloodgroup:-''',i[5])
-        print('''     Date of Admission:-''',i[6])
-    return("")
+        cur.execute("select * from outpatient where idno=(%s);",(idn1,))
+        d=cur.fetchall()
+        for i in d:
+            print("""     ID no.:-""",i[0])
+            print('''     Name:-''',i[1])
+            print('''     Age:-''',i[2])
+            print('''     Gender:-''',i[3])
+            print('''     Phone:-''',i[4])
+            print('''     Bloodgroup:-''',i[5])
+            print('''     Date of Admission:-''',i[6])
+        return("")
 
+    except mysql.connector.Error:
+        print("Id No Already exists................")
 
 #--------------------------------------------------------------------------------------------#
 #name modify
