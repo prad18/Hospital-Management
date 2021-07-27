@@ -23,6 +23,21 @@ def dat():
     while True:
         idn=input("ID no.:")
         if len(idn)==4 and idn.isnumeric():
+            cur.execute('select idno from outpatient')
+            dat=cur.fetchall()
+            a=[]
+            for i in dat:
+                for x in i:
+                    a.append(x)
+            if idn in a:
+                print(" ")
+                print("ID Already Exists in database!!")
+                print(" ")
+                continue 
+            else:
+                print(" ")
+                print("ID Available:- Registered")      
+                print(" ")               
             break
 
         else:
@@ -80,41 +95,36 @@ def dat():
         else:
             print("~!~!~!~~ Enter Valid Value ~~!~!~!~")
 
-
-    try:
-        cur.execute("insert into outpatient(idno,name,age,gender,phone,bg,Doctor_consulted,Illness) values(%s,%s,%s,%s,%s,%s,%s,%s)",(idn,name,age,gen,ph,bg,doc,dis))
-        con.commit()
-        print(" ")
-        print("""   
-        __________________________        
-        |                        |
-        |YOU HAVE BEEN REGISTERED| 
-        |________________________|     
-            """)
-        
-        print("""
-        _______________________________ 
-        |                             |
-        |Your details are as follows:-|
-        |_____________________________| 
-        
+    cur.execute("insert into outpatient(idno,name,age,gender,phone,bg,Doctor_consulted,Illness) values(%s,%s,%s,%s,%s,%s,%s,%s)",(idn,name,age,gen,ph,bg,doc,dis))
+    con.commit()
+    print(" ")
+    print("""   
+    __________________________        
+    |                        |
+    |YOU HAVE BEEN REGISTERED| 
+    |________________________|     
         """)
-        cur.execute("select * from outpatient where idno=(%s);",(idn,))
-        d=cur.fetchall()
-        for i in d:
-
-            print("""     ID no.:-""",i[0],'-',i[1])
-            print('''     Name:-''',i[2])
-            print('''     Age:-''',i[3])
-            print('''     Gender:-''',i[4])
-            print('''     Phone:-''',i[5])
-            print('''     Bloodgroup:-''',i[6])
-            print('''     Doctor Consulted-''',i[7])
-            print('''     Illness:-''',i[8])
-        return("")  
     
-    except mysql.connector.Error:
-        print("Id No Already exists................")
+    print("""
+    _______________________________ 
+    |                             |
+    |Your details are as follows:-|
+    |_____________________________| 
+    
+    """)
+    cur.execute("select * from outpatient where idno=(%s);",(idn,))
+    d=cur.fetchall()
+    for i in d:
+
+        print("""     ID no.:-""",i[0],'-',i[1])
+        print('''     Name:-''',i[2])
+        print('''     Age:-''',i[3])
+        print('''     Gender:-''',i[4])
+        print('''     Phone:-''',i[5])
+        print('''     Bloodgroup:-''',i[6])
+        print('''     Doctor Consulted-''',i[7])
+        print('''     Illness:-''',i[8])
+    return("")  
 #--------------------------------------------------------------------------------------------#
 #name modify
 def name():
@@ -533,7 +543,22 @@ def dat1():
     while True:
             idn1=input("ID no.:")
             if len(idn1)==4 and idn1.isnumeric():
-                            break
+                cur.execute('select idno from inpatient')
+                dat=cur.fetchall()
+                a=[]
+                for i in dat:
+                    for x in i:
+                        a.append(x)
+                if idn1 in a:
+                    print(" ")
+                    print("ID Already Exists in database!!")
+                    print(" ")
+                    continue 
+                else:
+                    print(" ")
+                    print("ID Available:- Registered")      
+                    print(" ")
+                break
             else:
                 print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")
     while True:    
