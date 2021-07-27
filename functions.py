@@ -1,7 +1,5 @@
-from codecs import register
 import datetime
 import random as rd
-import pandas as pd
 import mysql.connector 
 con=mysql.connector.connect(host="localhost",user="root",password="123456")
 cur=con.cursor()
