@@ -16,6 +16,10 @@ cur.execute("use Hospital2")
 
 #-------------------------------------------------------------------FUNCTIONS-----------------------------------------------------------------------#
 
+
+
+#------------------------------------------------------------------------OUTPATIENT------------------------------------------------------------------------------------#
+
 #register
 def dat():
     while True:
@@ -113,10 +117,7 @@ def dat():
     
     except mysql.connector.Error:
         print("Id No Already exists................")
-        
-    
-    
-#------------------------------------------------------------------------OUTPATIENT------------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------------#
 #name modify
 def name():
     adr=int(input('ENTER YOUR ID NO:'))
@@ -169,9 +170,6 @@ def name():
                 print('''     Illness:-''',row[8])
                 con.commit()
         return("")
-
-
-
 #--------------------------------------------------------------------------------------------#
 #age modification
 def age():
@@ -225,7 +223,6 @@ def age():
                 print('''     Illness:-''',row[8])
                 con.commit()
         return("")
-    
 #--------------------------------------------------------------------------------------------#
 #gender modification
 def gen():
@@ -279,7 +276,6 @@ def gen():
                 print('''     Illness:-''',row[8])
                 con.commit()
         return("")         
-
 #--------------------------------------------------------------------------------------------#
 #phone modify
 def ph():
@@ -333,8 +329,6 @@ def ph():
                 print('''     Illness:-''',row[8])
                 con.commit()
         return("")
-
-
 #--------------------------------------------------------------------------------------------#
 #blood grp 
 def bg():
@@ -388,8 +382,6 @@ def bg():
                 print('''     Illness:-''',row[8])
                 con.commit()
         return("") 
-
-
 #--------------------------------------------------------------------------------------------#
 #appointment 
 def ret():
@@ -500,9 +492,6 @@ def ret():
                     print("~!~!~!~WRONG OPTION PLEASE ENTER VALID VALUE~!~!~!~")
                 
         return(" ")
-
-
-
 #--------------------------------------------------------------------------------------------#
 #search
 def search():
@@ -540,9 +529,6 @@ def search():
 
 
 #-------------------------------------------------------------------------------------INPATIENT-------------------------------------------------------------------------#
-
-
-
 
 #register inpatient
 def dat1():
@@ -643,7 +629,6 @@ def dat1():
 
     except mysql.connector.Error:
         print("Id No Already exists................")
-
 #--------------------------------------------------------------------------------------------#
 #name modify
 def name1():
@@ -699,9 +684,6 @@ def name1():
                 print('''     Illness:-''',row[9])
                 con.commit()
         return("")
-
-
-
 #--------------------------------------------------------------------------------------------#
 #age modify
 def age1():
@@ -757,8 +739,6 @@ def age1():
                 print('''     Illness:-''',i[9])
                 con.commit()
         return("")
-
-
 #--------------------------------------------------------------------------------------------#
 #gender modify
 def gen1():
@@ -814,9 +794,6 @@ def gen1():
                 print('''     Illness:-''',row[9])
                 con.commit()
         return("")         
-
-
-
 #--------------------------------------------------------------------------------------------#
 #phone number change
 def ph1():
@@ -872,10 +849,6 @@ def ph1():
                 print('''     Illness:-''',row[9])
                 con.commit()
         return("")
-
-
-
-
 #--------------------------------------------------------------------------------------------#
 #blood group
 def bg1():
@@ -931,8 +904,6 @@ def bg1():
                 print('''     Illness:-''',row[9])
                 con.commit()
         return("")
-
-
 #--------------------------------------------------------------------------------------------#
 #search
 def search1():
@@ -955,7 +926,7 @@ def search1():
             ''')
             
             print("")
-            print("""     ID no.:-""",i[0],'',i[1])
+            print("""     ID no.:-""",i[0],'-',i[1])
             print('''     Name:-''',i[2])
             print('''     Age:-''',i[3])
             print('''     Gender:-''',i[4])
@@ -965,9 +936,6 @@ def search1():
             print('''     Doctor Consulted:-''',i[8])
             print('''     Illness:-''',i[9])
         return("") 
-
-
-
 #--------------------------------------------------------------------------------------------#
 #patient status
 def ret1():
@@ -1006,4 +974,50 @@ def ret1():
                         print("~!~!~!~WRONG OPTION PLEASE ENTER VALID VALUE~!~!~!~")
                 
         return(" ")
-
+#--------------------------------------------------------------------------------------------#
+#inpatient_delete
+def delete():
+    idn=int(input("Enter ID No(without code):" ))
+    cur.execute('select * from outpatient where idno=(%s)',(idn,))
+    dat=cur.fetchall()
+    a=[]
+    for i in dat:
+        a.append(i)
+    
+    if len(a)!=1:
+        print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+        
+    else:
+        cur.execute("delete from outpatient where idno=(%s)",(idn,))
+        print('')
+        print('''
+        ---------------------------------------      
+        | YOU DETAILS ARE DELETED SUCESSFULLY |
+        ---------------------------------------
+        ''')    
+        con.commit()
+    return(" ")
+#--------------------------------------------------------------------------------------------#
+#outpatient_delete
+def delete1():
+    idn=int(input("Enter ID No(without code):" ))
+    cur.execute('select * from inpatient where idno=(%s)',(idn,))
+    dat=cur.fetchall()
+    a=[]
+    for i in dat:
+        a.append(i)
+    
+    if len(a)!=1:
+        print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+        
+    else:
+        cur.execute("delete from inpatient where idno=(%s)",(idn,))
+        print('')
+        print('''
+        ---------------------------------------      
+        | YOU DETAILS ARE DELETED SUCESSFULLY |
+        ---------------------------------------
+        ''')    
+        con.commit()
+    return(" ")
+    

@@ -40,6 +40,7 @@ while True:
         
         """)
     e=input("||  SELECT || :-")
+    #outpatient
     if e=="1":
         while True:
             print(""" 
@@ -77,8 +78,9 @@ while True:
                     || 2. Appointment                     ||
                     || 3. List of Doctors                 ||
                     || 4. Search your details             ||
-                    || 5. To modify data                  ||
-                    || 6. Back                            ||
+                    || 5. Modify Patient data             ||
+                    || 6. Delete Data                     ||
+                    || 7. Back                            ||
                     ||                                    ||
                     ##====================================##
                     """)
@@ -156,7 +158,13 @@ while True:
                                     print("""~!~!~!~WRONG CHOICE PLEASE ENTER VALID VALUE~!~!~!~""")
                                 
                             
+
                         elif x==6:
+                            print(" ")
+                            print(delete())
+
+
+                        elif x==7:
                             break
                         
                         
@@ -177,7 +185,8 @@ while True:
                     || 2. Patient Status                  ||
                     || 3. Search patient details          ||
                     || 4. Modify patient data             ||
-                    || 5. Back                            ||
+                    || 5. Delete patient data             ||
+                    || 6. Back                            ||
                     ||                                    ||
                     ##====================================##
                     """)
@@ -248,8 +257,13 @@ while True:
                                     print(" ")
                                     print("""~!~!~!~WRONG CHOICE PLEASE ENTER VALID VALUE~!~!~!~""")
                                 
-                            
+
+
                         elif x==5:
+                            print(' ')
+                            print(delete1())
+
+                        elif x==6:
                             break
                         
                         
@@ -257,8 +271,11 @@ while True:
                             print(" ")
                             print("~!~!~!~WRONG CHOICE PLEASE ENTER A VALID VALUE~!~!~!~")
 
-            else:
+            elif g=="3":
                 break
+
+            else:
+                print("~~~~~~~~~~SELECT 1,2,or 3~~~~~~~~~~~~~~")
 
     
     elif e=="2":
