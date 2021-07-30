@@ -33,11 +33,7 @@ def dat():
                 print(" ")
                 print("ID Already Exists in database!!")
                 print(" ")
-                continue 
-            else:
-                print(" ")
-                print("ID Available:- Registered")      
-                print(" ")               
+                continue           
             break
 
         else:
@@ -553,11 +549,7 @@ def dat1():
                     print(" ")
                     print("ID Already Exists in database!!")
                     print(" ")
-                    continue 
-                else:
-                    print(" ")
-                    print("ID Available:- Registered")      
-                    print(" ")
+                    continue
                 break
             else:
                 print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")
