@@ -21,7 +21,7 @@ def dat():
     while True:
         idn=input("ID no.:")
         if len(idn)==4 and idn.isnumeric():
-            cur.execute('select idno from outpatient')
+            cur.execute("select idno from outpatient")
             dat=cur.fetchall()
             a=[]
             for i in dat:
@@ -30,8 +30,8 @@ def dat():
             if idn in a:
                 print(" ")
                 print("ID Already Exists in database!!")
-                print(" ")
-                continue           
+                print(" ")  
+                continue         
             break
 
         else:
