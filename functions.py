@@ -6,9 +6,7 @@ cur=con.cursor()
 
 cur=con.cursor(buffered=True) 
 
-cur.execute("create database if not exists Hospital2")
-
-cur.execute("use Hospital2")
+cur.execute("use hospital")
 
 
 
