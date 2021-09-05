@@ -237,6 +237,8 @@ while True:
                             |5.Blood group           |
                             |6.Back                  | 
                             |________________________|
+
+
                                 """)
                                             
                                 s=int(input("ENTER YOUR CHOICE:-"))
