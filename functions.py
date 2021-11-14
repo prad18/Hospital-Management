@@ -969,17 +969,17 @@ def ret1():
                     if s<120 and d<80:
                         print("Normal")
                         break
-                    elif s>=120 and s<=129 and d<80:
+                    elif s>120 and s<=129 and d<=80:
                         print("Elevated")
                         break
                 
-                    elif s>=130 and s<=139 and d>=80 and d<=89 :
+                    elif s>130 and s<=139 and d>80 and d<=89 :
                         print("Hypertension Stage 1")
                         break
-                    elif s>=140 and d>=90:
+                    elif s>=140 and s<180 and d>=90 and d<119:
                         print("Hypertension stage 2")
                         break
-                    elif s>180 and d>120:
+                    elif s>180 and d >120:
                         print("HYPERTENSIVE CRISIS\n(consult your doctor immediately)")
                         break
                     

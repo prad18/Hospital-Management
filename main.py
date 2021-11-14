@@ -200,30 +200,20 @@ while True:
                     ||                                    ||
                     ##====================================##
                     """)
-                        x=int(input("""YOUR OPTION:-"""))
+                        x=input("""YOUR OPTION:-""")
                         
                         
-                        if x==1:
+                        if x=="1":
                             print(" ")
                             print(dat1())
-                                
-                        
-                        elif x==2:
+                        elif x=="2":
                             print(" ")
                             print(ret1())
-                        
-                            
-                        elif x==3:
+                        elif x=="3":
                             print(" ")
                             print(search1())
-                        
-                           
-                        
-                            
-                        elif x==4:
+                        elif x=="4":
                             print(" ")
-
-                        
                             while True:
                                 print("""
                             __________________________      
@@ -271,11 +261,11 @@ while True:
                                 
 
 
-                        elif x==5:
+                        elif x=="5":
                             print(' ')
                             print(delete1())
 
-                        elif x==6:
+                        elif x=="6":
                             break
                         
                         
