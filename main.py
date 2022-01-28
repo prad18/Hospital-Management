@@ -323,8 +323,7 @@ while True:
                     l=t.strftime("%p")
                     if l=="PM":
                     
-                        print("|||   GOOD EVENING MR. VARUN   |||")
-                    
+                        print("|||   GOOD EVENING MR. VARUN   |||")                    
                     else:
                         print("|||   GOOD MORNING MR. VARUN   |||")
                     print(" ")
@@ -335,7 +334,6 @@ while True:
                     print(o)
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-
             elif e=='2':
                 w=7002
                 pswd=int(input('ENTER PASSWORD:'))
@@ -344,7 +342,6 @@ while True:
                     l=t.strftime("%p")
                     if l=="PM":
                         print("|||   GOOD EVENING MR. HRITHIK   |||")
-                    
                     else:
                         print("|||   GOOD MORNING MR. HRITHIK   |||")
                     print(" ")    
@@ -355,7 +352,6 @@ while True:
                     print(o)    
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-
                 
             elif e=='3':
                 z=7003
@@ -376,7 +372,6 @@ while True:
                     print(o)  
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
-
             elif e=='4':
                 z=7004
                 pswd=int(input('ENTER PASSWORD:'))
@@ -416,9 +411,7 @@ while True:
                     o=rd.choice(q)
                     print(o)
                 else:
-                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
-        
-                
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~') 
             elif e=='6':
                 z=7006
                 pswd=int(input('ENTER PASSWORD:'))
@@ -438,7 +431,6 @@ while True:
                     print(o)  
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
-                
             elif e=='7':
                 z=7007
                 pswd=int(input('ENTER PASSWORD:'))
@@ -458,7 +450,6 @@ while True:
                     print(o)
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~') 
-                
             elif e=='8':
                 z=7008
                 pswd=int(input('ENTER PASSWORD:'))
@@ -478,7 +469,6 @@ while True:
                     print(o)
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~') 
-                
             elif e=='9':
                 z=7009
                 pswd=int(input('ENTER PASSWORD:'))
@@ -498,7 +488,6 @@ while True:
                     print(o)
                 else:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-                
             elif e=='10':
                 z=7010
                 pswd=int(input('ENTER PASSWORD:'))
@@ -517,8 +506,7 @@ while True:
                     o=rd.choice(q)
                     print(o)
                 else:
-                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-                
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~') 
             elif e=='11':
                 z=7011
                 pswd=int(input('ENTER PASSWORD:'))
@@ -537,8 +525,7 @@ while True:
                     o=rd.choice(q)
                     print(o) 
                 else:
-                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-                
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')  
             elif e=='12':
                 z=7012
                 pswd=int(input('ENTER PASSWORD:'))
@@ -557,8 +544,7 @@ while True:
                     o=rd.choice(q)
                     print(o)
                 else:
-                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-                
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')   
             elif e=='13':
                 z=7013
                 pswd=int(input('ENTER PASSWORD:'))
@@ -577,8 +563,7 @@ while True:
                     o=rd.choice(q)
                     print(o) 
                 else:
-                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
-                
+                    print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')    
             elif e=='14':
                 z=7014
                 pswd=int(input('ENTER PASSWORD:'))
@@ -600,9 +585,7 @@ while True:
                     print('~!~!~!~~PASSWORD OR ID IS WRONG~~!~!~!~')
             
             else:
-                break    
-         
-                        
+                break                    
     elif e=="3":
             print(" ")
             print("\n"
@@ -623,9 +606,7 @@ while True:
             print("  ")
             print("  ")
             print("  ")
-            break 
-        
-    
+            break
     else:
         print(" ")
         print("~~~~PLEASE ENTER 1,2 OR 3~~~~")

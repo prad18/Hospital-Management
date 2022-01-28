@@ -3,19 +3,10 @@ import random as rd
 import mysql.connector 
 con=mysql.connector.connect(host="localhost",user="root",password="123456")
 cur=con.cursor()
-
 cur=con.cursor(buffered=True) 
-
 cur.execute("use hospital")
-
-
-
 #-------------------------------------------------------------------FUNCTIONS-----------------------------------------------------------------------#
-
-
-
 #------------------------------------------------------------------------OUTPATIENT------------------------------------------------------------------------------------#
-
 #register
 def dat():
     while True:
@@ -33,34 +24,26 @@ def dat():
                 print(" ")  
                 continue         
             break
-
         else:
-            print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")
-    
+            print(" ~!~!~!~~You ID must contain only 4 digit number~~!~!~!~")    
     while True:    
         name=input("Patient name:")
         if name.isalpha():
-            break
-            
+            break           
         else:
-            print("~!~!~!~~Only string~~!~!~!~~!~!~!~")
-              
-    
+            print("~!~!~!~~Only string~~!~!~!~~!~!~!~")    
     while True:
         age=input("Age:")
         if age.isnumeric() and len(age)==2:
             break
         else:
             print("~!~!~!~~Please enter your appropriate age required~~!~!~!~")
-
-    
     while True:
         gen=input("Gender M/F:")
         if gen==("M") or gen==("F"):
             break
         else:
-            print("~!~!~!~~ M\F only ~~!~!~!~")
-    
+            print("~!~!~!~~ M\F only ~~!~!~!~")    
     while True:
         ph=input("Phone no.:")
         if len(ph)==10:
