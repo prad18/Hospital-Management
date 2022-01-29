@@ -508,13 +508,7 @@ def search():
             print('''     Doctor Consulted-''',i[7])
             print('''     Illness:-''',i[8])
         return("") 
-
-
-
-
-
 #-------------------------------------------------------------------------------------INPATIENT-------------------------------------------------------------------------#
-
 #register inpatient
 def dat1():
     while True:
@@ -563,7 +557,6 @@ def dat1():
             break
         else:
             print("~!~!~!~~10 digits required~~!~!~!~")
-    
     while True:
         bg1=input("""Blood group(A+,B+,O+,AB+,A-,B-,O-,AB-):-""")
         if bg1==("A+") or bg1==("B+") or bg1==("O+") or bg1==("AB+") or bg1==("A-") or bg1==("B-") or bg1==("O-") or bg1==("AB-"):
@@ -571,11 +564,9 @@ def dat1():
 
         else:
             print("~!~!~!~~ Enter valid value ~~!~!~!~")
-    
     while True:
         doa=input("""Date Of Admission(YY-MM-DD):-""")
         break
-    
     while True:
         doc=input("""Doctor Consulted:""")
         if doc.isalpha:
@@ -988,7 +979,7 @@ def delete():
         print('')
         print('''
         ---------------------------------------      
-        | YOU DETAILS ARE DELETED SUCESSFULLY |
+        | YOUR DETAILS ARE DELETED SUCESSFULLY |
         ---------------------------------------
         ''')    
         con.commit()
@@ -1011,9 +1002,68 @@ def delete1():
         print('')
         print('''
         ---------------------------------------      
-        | YOU DETAILS ARE DELETED SUCESSFULLY |
+        | YOUR DETAILS ARE DELETED SUCESSFULLY |
         ---------------------------------------
         ''')    
         con.commit()
     return(" ")
-    
+
+def univsearch():
+        adr=input('ENTER YOUR ID NO(eg: ip1234):')
+        if adr[0]=="i" and adr[1]=="p":
+            cur.execute('select * from inpatient where idno=(%s)',(adr[2:],))
+            dat=cur.fetchall()
+            a=[]
+            for i in dat:
+                a.append(i)
+                    
+            if len(a)!=1:
+                print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+                    
+            else:
+                print('')
+                print('''
+                ------------------------    
+                |    YOUR  DETAILS     |
+                ------------------------
+                ''')
+                    
+                print("")
+                print("""     ID no.:-""",i[0],'-',i[1])
+                print('''     Name:-''',i[2])
+                print('''     Age:-''',i[3])
+                print('''     Gender:-''',i[4])
+                print('''     Phone:-''',i[5])
+                print('''     Bloodgroup:-''',i[6])
+                print('''     Doctor Consulted-''',i[7])
+                print('''     Illness:-''',i[8])
+        elif adr[0]=="o" and adr[1]=="p":
+            cur.execute('select * from outpatient where idno=(%s)',(adr[2:],))
+            dat=cur.fetchall()
+            a=[]
+            for i in dat:
+                a.append(i)
+                
+            if len(a)!=1:
+                print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
+                
+            else:
+                print('')
+                print('''
+                ------------------------    
+                |    YOUR  DETAILS     |
+                ------------------------
+                ''')
+                
+                print("")
+                print("""     ID no.:-""",i[0],'-',i[1])
+                print('''     Name:-''',i[2])
+                print('''     Age:-''',i[3])
+                print('''     Gender:-''',i[4])
+                print('''     Phone:-''',i[5])
+                print('''     Bloodgroup:-''',i[6])
+                print('''     Doctor Consulted-''',i[7])
+                print('''     Illness:-''',i[8])
+        else:
+            print("Enter valid id no")
+        return("") 

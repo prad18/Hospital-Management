@@ -32,10 +32,10 @@ while True:
       
     
         
-        _______________                _______________                ____________
-        |             |                |             |                |          |
-        | 1. PATIENT  |                | 2. DOCTOR   |                | 3. EXIT  |
-        |_____________|                |_____________|                |__________|
+        _______________                _______________           ____________      ____________
+        |             |                |             |           |          |      |          |
+        | 1. PATIENT  |                | 2. DOCTOR   |           | 3. EXIT  |      | 4.Search |
+        |_____________|                |_____________|           |__________|      |__________|
         
          
         
@@ -83,10 +83,9 @@ while True:
                     || 1. Register patient                ||
                     || 2. Appointment                     ||
                     || 3. List of Doctors                 ||
-                    || 4. Search your details             ||
-                    || 5. Modify Patient data             ||
-                    || 6. Delete Data                     ||
-                    || 7. Back                            ||
+                    || 4. Modify Patient data             ||
+                    || 5. Delete Data                     ||
+                    || 6. Back                            ||
                     ||                                    ||
                     ##====================================##
                     """)
@@ -108,15 +107,7 @@ while True:
                             print("-----FOLLOWING DOCTORS ARE AVAILABLE-----")
                             print(" ")
                             print(df)
-                            
-                        
                         elif x==4:
-                            print(" ")
-                            print(search())
-                           
-                        
-                            
-                        elif x==5:
                             print(" ")
 
                         
@@ -165,12 +156,12 @@ while True:
                                 
                             
 
-                        elif x==6:
+                        elif x==5:
                             print(" ")
                             print(delete())
 
 
-                        elif x==7:
+                        elif x==6:
                             break
                         
                         
@@ -193,10 +184,9 @@ while True:
                     ||                                    ||
                     || 1. Register patient                ||
                     || 2. Patient Status                  ||
-                    || 3. Search patient details          ||
-                    || 4. Modify patient data             ||
-                    || 5. Delete patient data             ||
-                    || 6. Back                            ||
+                    || 3. Modify patient data             ||
+                    || 4. Delete patient data             ||
+                    || 5. Back                            ||
                     ||                                    ||
                     ##====================================##
                     """)
@@ -210,9 +200,6 @@ while True:
                             print(" ")
                             print(ret1())
                         elif x=="3":
-                            print(" ")
-                            print(search1())
-                        elif x=="4":
                             print(" ")
                             while True:
                                 print("""
@@ -261,11 +248,11 @@ while True:
                                 
 
 
-                        elif x=="5":
+                        elif x=="4":
                             print(' ')
                             print(delete1())
 
-                        elif x=="6":
+                        elif x=="5":
                             break
                         
                         
@@ -607,6 +594,9 @@ while True:
             print("  ")
             print("  ")
             break
+    elif e=="4":
+        print(" ")
+        print(univsearch())
     else:
         print(" ")
         print("~~~~PLEASE ENTER 1,2 OR 3~~~~")
