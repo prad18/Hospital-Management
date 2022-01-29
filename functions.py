@@ -478,36 +478,6 @@ def ret():
                 
         return(" ")
 #--------------------------------------------------------------------------------------------#
-#search
-def search():
-        adr=int(input('ENTER YOUR ID NO(without code):'))
-        cur.execute('select * from outpatient where idno=(%s)',(adr,))
-        dat=cur.fetchall()
-        a=[]
-        for i in dat:
-            a.append(i)
-            
-        if len(a)!=1:
-            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
-            
-        else:
-            print('')
-            print('''
-            ------------------------    
-            |    YOUR  DETAILS     |
-            ------------------------
-            ''')
-            
-            print("")
-            print("""     ID no.:-""",i[0],'-',i[1])
-            print('''     Name:-''',i[2])
-            print('''     Age:-''',i[3])
-            print('''     Gender:-''',i[4])
-            print('''     Phone:-''',i[5])
-            print('''     Bloodgroup:-''',i[6])
-            print('''     Doctor Consulted-''',i[7])
-            print('''     Illness:-''',i[8])
-        return("") 
 #-------------------------------------------------------------------------------------INPATIENT-------------------------------------------------------------------------#
 #register inpatient
 def dat1():
@@ -891,38 +861,6 @@ def bg1():
                 print('''     Illness:-''',row[9])
                 con.commit()
         return("")
-#--------------------------------------------------------------------------------------------#
-#search
-def search1():
-        adr=int(input('ENTER YOUR ID NO:'))
-        cur.execute('select * from inpatient where idno=(%s)',(adr,))
-        dat=cur.fetchall()
-        a=[]
-        for i in dat:
-            a.append(i)
-            
-        if len(a)!=1:
-            print('~!~!~!~!~~NO DATA FOUND~~!~!~!~!~')
-            
-        else:
-            print('')
-            print('''
-            ------------------------    
-            |    YOUR  DETAILS     |
-            ------------------------
-            ''')
-            
-            print("")
-            print("""     ID no.:-""",i[0],'-',i[1])
-            print('''     Name:-''',i[2])
-            print('''     Age:-''',i[3])
-            print('''     Gender:-''',i[4])
-            print('''     Phone:-''',i[5])
-            print('''     Bloodgroup:-''',i[6])
-            print('''     Date of Admission:-''',i[7])
-            print('''     Doctor Consulted:-''',i[8])
-            print('''     Illness:-''',i[9])
-        return("") 
 #--------------------------------------------------------------------------------------------#
 #patient status
 def ret1():
