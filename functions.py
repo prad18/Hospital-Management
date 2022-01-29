@@ -370,7 +370,7 @@ def bg():
 #--------------------------------------------------------------------------------------------#
 #appointment 
 def ret():
-        adr=int(input('Enter ID no:'))
+        adr=int(input('Enter ID no(without code):'))
         cur.execute('select * from outpatient where idno=(%s)',(adr,))
         dat=cur.fetchall()
         a=[]
