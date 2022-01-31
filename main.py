@@ -601,8 +601,3 @@ while True:
         print(" ")
         print("~~~~PLEASE ENTER 1,2 OR 3~~~~")
         con.close()
-
-
-
-            
-
